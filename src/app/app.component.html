@@ -1,11 +1,22 @@
 <h1>{{title}}</h1>
 <p>Click on an item to edit name</p>
-<button (click)="onAddItem(newItem.value)">Add Item To List</button>
-<input #newItem type="text" name="addBox">
 
-<ul>
-    <li *ngFor="let groceryItem of groceryList">
-        <button>{{groceryItem.name}}</button>
-    </li>
-</ul>
+<div class="container">
+    <div class="master">
+        <ul>
+            <li *ngFor="let groceryItem of groceryList">
+                <button (click)="setEditingItem(groceryItem)">{{groceryItem.name}}</button>
+                <button (click)="onDelete(groceryItem)" style="color: red">Delete</button>
+            </li>
+        </ul>
+    </div>
+    <div class="detail">
+        <button (click)="save()">Add Item To List</button>
+        <input type="text" name="addBox" [(ngModel)]="editingItem.name"><br><br>
+        <button (click)="cancelEdit()">Cancel</button>
+    </div>
+</div>
+
+
+
 
